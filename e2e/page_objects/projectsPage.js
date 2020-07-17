@@ -1,16 +1,13 @@
 module.exports = {
   elements: {
-    aboutContainer: {
-      selector: "div.about",
+    projectArticle: {
+      selector: "article",
     },
     navTitle: {
       selector: "a.navigation-title",
     },
     navBar: {
       selector: "nav",
-    },
-    navPageLink: {
-      selector: "ul.navigation-list",
     },
   },
 };
