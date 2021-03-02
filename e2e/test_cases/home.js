@@ -4,7 +4,8 @@ module.exports = {
   before: (browser) => {
     browser
       .url(`${browser.launchUrl}`)
-      .assert.titleContains("adamdubey.github.io");
+      .assert.titleContains("The Internet")
+      .pause(1000);
   },
 
   after: (browser) => {
@@ -13,35 +14,27 @@ module.exports = {
 
   "Validate homePage is loaded": (browser) => {
     const homePage = browser.page.homePage();
+    const headerCopyText = "Welcome to the-internet"
 
-    homePage.assert.visible("@navTitle");
-    homePage.assert.visible("@navBar");
+    homePage.assert.visible('@header');
+    homePage.assert.visible('@availableExamples');
   },
 
-  "Validate Blog Page": (browser) => {
+  "Perform Basic Authentication Example": (browser) => {
     const homePage = browser.page.homePage();
-    const blogPage = browser.page.blogPage();
+    const authPage = browser.page.authPage();
+    const username = process.env.USERNAME;
+    const password = process.env.PASSWORD;
 
-    homePage.assert.visible("@navPageLink");
-    homePage.assert.visible("@aboutContainer");
-    homePage.clickLinkContainingText("Blog");
-    blogPage.assert.visible("@body");
-  },
+    homePage.clickLinkContainingText('Form Authentication');
+    authPage.assert.visible('@loginForm');
+    authPage.setValue('@username', username);
+    authPage.setValue('@password', password);
+    authPage.click('@loginBtn');
+    authPage.expect.element('@loginSuccessModal').to.be.visible;
+    authPage.expect.element('@logoutBtn').contains.text('Logout');
+    authPage.click('@logoutBtn');
+    authPage.assert.visible('@loginForm');
+  }
 
-  "Return to Home Page": (browser) => {
-    const homePage = browser.page.homePage();
-
-    homePage.assert.visible("@navBar");
-    homePage.click("@navTitle");
-    homePage.assert.visible("@aboutContainer");
-  },
-
-  "Validate Projects Page": (browser) => {
-    const homePage = browser.page.homePage();
-    const projectsPage = browser.page.projectsPage();
-
-    homePage.assert.visible("@navPageLink");
-    homePage.clickLinkContainingText("Projects");
-    projectsPage.assert.visible("@projectArticle");
-  },
 };

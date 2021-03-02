@@ -7,7 +7,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "LAUNCH_URL=https://adamdubey.github.io/ ./node_modules/.bin/nightwatch  -e chrome"
+    "test": "LAUNCH_URL=http://the-internet.herokuapp.com/ ./node_modules/.bin/nightwatch  -e chrome"
   },
   "repository": {
     "type": "git",
@@ -20,28 +20,27 @@
   },
   "homepage": "https://github.com/adamdubey/nw_automation_demo#readme",
   "dependencies": {
-    "nightwatch": "^1.3.7",
-    "selenium-download": "^2.0.15"
+    "nightwatch": "^1.5.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.720.0",
-    "chromedriver": "^84.0.1",
+    "aws-sdk": "^2.853.0",
+    "chromedriver": "^88.0.0",
     "env2": "^2.2.2",
-    "geckodriver": "^1.19.1",
-    "mime-types": "^2.1.27",
-    "nodemon": "^2.0.4",
+    "geckodriver": "^1.22.1",
+    "mime-types": "^2.1.29",
+    "nodemon": "^2.0.7",
     "selenium-server": "^3.141.59"
   },
   "keywords": [
     "nightwatch",
     "testing",
     "front-end",
+    "end-to-end",
     "UI",
     "browser",
     "test",
     "testing",
-    "step-by-step tutorial",
-    "how to",
+    "QA Automation",
     "User Acceptance Testing",
     "UAT"
   ]
